@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class MoveCtr1 : MonoBehaviour
 {
+    public static bool isStopped = false;
     public enum MoveType
     {
         WAY_POINT,
         LOOK_AT,
         GEAR_VR
     }
-    public MoveType moveType = MoveType.WAY_POINT;
+    public MoveType moveType = MoveType.LOOK_AT;
     public float speed = 1.0f;
     public float damping = 3.0f;
 
@@ -35,6 +36,7 @@ public class MoveCtr1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isStopped) return;
         switch (moveType) {
             case MoveType.WAY_POINT:
                 MoveWayPoint();
